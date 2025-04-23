@@ -1,41 +1,40 @@
 # config.py
 
 NAME_CLASS = "css-10ofhqw"
-MAIN_PAGE_PRICES_CLASS = "css-uj7mm0"
+SEARCH_PAGE_PRICES_CLASS = "css-uj7mm0"
 PRICE_CLASS = "css-fqcbii"
-CONDITION_CLASS = "css-z0m36u"
+CONDITION_CLASS = "css-1los5bp"
 SELLER_CLASS = "css-fka1fu"
 domain = None
 
 # UA set as default
 countryDomain = {
-    "BG": ".bg",
-    "PL": ".pl",
-    "PT": ".pt",
-    "RO": ".ro",
-    "KZ": ".kz",
-    "UA": ".ua",
-    "UZ": ".uz"
+    'Bulgaria': ".bg",
+    'Poland': ".pl",
+    'Portugal': ".pt",
+    'Romania': ".ro",
+    'Kazakhstan': ".kz",
+    'Ukraine': ".ua",
+    'Uzbekistan': ".uz"
 }
 
 # USD set as default
 currencyDict = {
-    "UAH" : "?currency=UAH",
-    "USD" : "?currency=USD",
-    "EUR" : "?currency=EUR",
-    "BGN" : "?currency=BGN",
-    "PLN" : "?currency=PLN",
-    "EUR" : "?currency=EUR",
-    "RON" : "?currency=RON",
-    "KZT" : "?currency=KZT",
-    "UZS" : "?currency=UZS"
+    'UAH': "?currency=UAH",
+    'USD': "?currency=USD",
+    'EUR': "?currency=EUR",
+    'BGN': "?currency=BGN",
+    'PLN': "?currency=PLN",
+    'RON': "?currency=RON",
+    'KZT': "?currency=KZT",
+    'UZS': "?currency=UZS"
 }
 
 # ALL set as default
 conditionDict = {
-    "all" : "",
-    "new" : "?search[filter_enum_state][0]=new",
-    "used" : "?search[filter_enum_state][0]=used"
+    'all': "",
+    'new': "?search[filter_enum_state][0]=new",
+    'used': "?search[filter_enum_state][0]=used"
 }
 
 # headers for request

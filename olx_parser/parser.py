@@ -58,8 +58,7 @@ def parse_items(soup) -> None:
         try:
             name = soup.find("h4", class_=NAME_CLASS)
             price = soup.find("h3", class_=PRICE_CLASS)
-            condition_tags =soup.find_all("p", class_=CONDITION_CLASS)[1]
-            condition = condition_tags.text.partition(":")[2]
+            condition =soup.find_all("p", class_=CONDITION_CLASS)[1]
             seller = soup.find("h4", class_=SELLER_CLASS)
         except AttributeError:
             continue
@@ -67,7 +66,7 @@ def parse_items(soup) -> None:
         data = {
             "name" : name.text.strip(),
             "price" : price.text.strip(),
-            "condition" : condition.strip(),
+            "condition" : condition.text.strip(),
             "seller" : seller.text.strip(),
             "link" : link
         }
@@ -95,12 +94,17 @@ def average_price(soup: BeautifulSoup):
     '''
     if not soup:
         return None
+    
     price_list = _get_prices(soup)
-    return int(sum((price_list))/len(price_list)) if price_list else 0
+    
+    if price_list:
+        return round((sum((price_list))/len(price_list)), 2)
+
+    return 0
 
 
 
-def get_page(query: str, country:str='UA', currency:str='USD', condition:str='all') -> str:
+def get_page(query: str, country:str='Ukraine', currency:str='', condition:str='all') -> str:
     """
     Builds URL for the website and returns the page
 
@@ -131,14 +135,20 @@ def get_page(query: str, country:str='UA', currency:str='USD', condition:str='al
     if not query:
         raise ValueError("The 'query' parameter is required and cannot be empty.")
 
+    country = countryDomain[country]
+    query = "-".join(query.split())
+    currency = currencyDict[currency] if currency else None
+    condition = conditionDict[condition]
+
     #Build the URL
     try:
-        url = f"https://www.olx{countryDomain[country]}/list/q-{"-".join(query.split())}/{currencyDict[currency]}{conditionDict[condition]}"
+        url = f"https://www.olx{country}/list/q-{query}/{currency}{condition}"
     except KeyError as e:
         print(f"Invalid value of {e}\nUse 'help' function to see available parameters")
         return None
 
     global domain
-    domain = countryDomain[country]
+    domain = country
 
     return _fetch_url(url)
+

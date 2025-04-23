@@ -35,7 +35,7 @@ python main.py
 
 - Отримати сторінку за допомогою `get_page()`
 ```python
-soup = get_page("PlayStation 5", country="BG", currency="BGN", condition="Used")
+soup = get_page("PlayStation 5", country="Bulgaria", currency="BGN", condition="Used")
 ```
 
 - Розпарсити оголошення та зберегти інформацію через `parse_items()`
@@ -48,20 +48,20 @@ parse_items(soup)
 average_price(soup)
 ```
 
-### Приклад використання в коді
+### Приклад використання в код
 ```python
-soup = get_page("Iphone 15", country="UA", currency="USD", condition="used")
+soup = get_page("Iphone 15", country="Ukraine", currency="USD", condition="used")
 
 parse_items(soup)
 avg = average_price(soup)
-print(f"Середня ціна: {avg} UAH")
+print(f"Середня ціна: {avg} USD")
 ```
 
 ## ⚙️ Конфігурація
 
 Налаштування зберігаються у файлі `config.py`:
 
-- `countryDomain` — підтримувані країни (`UA`, `PL` тощо)
+- `countryDomain` — підтримувані країни (`Ukraine`, `Poland` тощо)
 - `currencyDict` — доступні валюти (`USD`, `PLN` тощо)
 - `conditionDict` — фільтри стану товару (`all`, `new`, `used`)
 - CSS-класи для парсингу: `NAME_CLASS`, `PRICE_CLASS` та інші

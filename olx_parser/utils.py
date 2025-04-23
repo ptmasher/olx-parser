@@ -2,11 +2,11 @@ import re
 import json
 import requests
 from bs4 import BeautifulSoup
-from .config import headers, MAIN_PAGE_PRICES_CLASS
+from .config import headers, SEARCH_PAGE_PRICES_CLASS
 
 
 def _fetch_url(url) -> BeautifulSoup | None:
-        # parse the link
+    # parse the link
     try: 
         response = requests.get(url, headers=headers, timeout=10)
         response.raise_for_status()
@@ -20,7 +20,7 @@ def _fetch_url(url) -> BeautifulSoup | None:
 def _get_prices(soup) -> list[int]:
     
     price_list = []
-    prices = soup.find_all("p", class_=MAIN_PAGE_PRICES_CLASS)
+    prices = soup.find_all("p", class_=SEARCH_PAGE_PRICES_CLASS)
     for price in prices:
         # separates numbers with price from everything else
         cleaned_price = re.sub(r"[^\d\s]", "", price.text).replace(" ", "")

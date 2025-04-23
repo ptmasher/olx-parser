@@ -35,7 +35,7 @@ python main.py
 
 - Parse OLX page using 'get_page()' function
 ```python
-soup = get_page("PlayStation 5", country="BG", currency="BGN", condition="Used")
+soup = get_page("PlayStation 5", country="Bulgaria", currency="BGN", condition="Used")
 ```
 
 - Parse items from the page and save information using 'parse_items()'
@@ -52,17 +52,17 @@ average_price(soup)
 ```python
 Parse the page and save information using 'parse_items()'
 
-soup = get_page("Iphone 15", country="UA", currency="USD", condition="used")
+soup = get_page("Iphone 15", country="Ukraine", currency="USD", condition="used")
 
 parse_items(soup)
 avg = average_price(soup)
-print(f"Average price: {avg} UAH")
+print(f"Average price: {avg} USD")
 ```
 
 ## ⚙️ Configuration
 Settings are located in config.py:
 
-- `countryDomain` — supported countries (`UA`, `PL`, etc.)
+- `countryDomain` — supported countries (`Ukraine`, `Poland`, etc.)
 - `currencyDict` - available currencies (`USD`, `PLN`, etc.)
 - `conditionDict` - item condition filters (`all`, `new`, `used`)
 - CSS class constants for parsing: `NAME_CLASS`, `PRICE_CLASS`, etc.

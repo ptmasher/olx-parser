@@ -1,6 +1,6 @@
-from parser import get_page, parse_items, average_price
+from .parser import get_page, parse_items, average_price
 
-if __name__ == "__main__":
+def main():
     query = input("Enter search query: ")
     soup = get_page(query)
 
